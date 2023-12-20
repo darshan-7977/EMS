@@ -1,6 +1,8 @@
-package edu.jsp.employee.model;
+package edu.jsp.employee.controller;
 
 import java.util.Comparator;
+
+import edu.jsp.employee.model.Employee;
 
 public class SortByName implements Comparator<Employee> {
 

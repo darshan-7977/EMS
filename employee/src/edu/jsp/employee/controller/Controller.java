@@ -5,12 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
 import edu.jsp.employee.model.Employee;
-import edu.jsp.employee.model.SortByContact;
-import edu.jsp.employee.model.SortByID;
-import edu.jsp.employee.model.SortByName;
-import edu.jsp.employee.model.SortBySalary;
 
 public class Controller { // Logic Layer
 
@@ -61,23 +56,23 @@ public class Controller { // Logic Layer
 		}
 	}
 
-	public List<Employee> sortedEmployee(Comparator<Employee> comparator){
-		if(comparator instanceof SortByID) {
+	public List<Employee> sortedEmployee(Comparator<Employee> comparator) {
+		if (comparator instanceof SortByID) {
 			Collections.sort(employees, comparator);
 			return employees;
-		}else if(comparator instanceof SortByName) {
+		} else if (comparator instanceof SortByName) {
 			Collections.sort(employees, comparator);
 			return employees;
-		}else if(comparator instanceof SortBySalary) {
+		} else if (comparator instanceof SortBySalary) {
 			Collections.sort(employees, comparator);
 			return employees;
-		}else if(comparator instanceof SortByContact) {
+		} else if (comparator instanceof SortByContact) {
 			Collections.sort(employees, comparator);
 			return employees;
-		}else{
+		} else {
 			return employees;
 		}
-		
+
 	}
 
 }
