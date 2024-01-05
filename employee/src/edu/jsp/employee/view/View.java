@@ -27,8 +27,9 @@ public class View { // Presentation Layer
 		System.out.println("1. SAVE EMPLOYEE");
 		System.out.println("2. GET EMPLOYEE");
 		System.out.println("3. GET ALL EMPLOYEE");
-		System.out.println("4. DELETE EMPLOYEE");
-		System.out.println("5. EXIT");
+		System.out.println("4. Update EMPLOYEE");
+		System.out.println("5. DELETE EMPLOYEE");
+		System.out.println("6. EXIT");
 		int choice = scanner.nextInt();
 		scanner.nextLine();
 		switch (choice) {
@@ -45,10 +46,14 @@ public class View { // Presentation Layer
 			break;
 		}
 		case 4: {
-			deleteEmployee();
+			updateEmployee();
 			break;
 		}
 		case 5: {
+			deleteEmployee();
+			break;
+		}
+		case 6: {
 			this.loop = false;
 			System.out.println("THANK YOU");
 			break;
@@ -123,7 +128,7 @@ public class View { // Presentation Layer
 			System.out.println("Employee Age: " + e.getAge());
 			System.out.println("Employee Salary: " + e.getSal());
 			System.out.println("Employee Contact: " + e.getContact());
-			System.out.println("__________THANK-YOU__________");
+//			System.out.println("__________THANK-YOU__________");
 		}
 
 	}
@@ -158,87 +163,91 @@ public class View { // Presentation Layer
 	}
 
 	public void updateEmployee() {
-		getAllEmployee();
-		System.out.println("Enter ID of Employee: ");
-		int id = scanner.nextInt();
+		if (controller.getAllEmployee().isEmpty()) {
+			System.out.println("no employees present");
+		} else {
+//		getAllEmployee();
+			System.out.println("Enter ID of Employee: ");
+			int id = scanner.nextInt();
 
-		for (Employee e : controller.getAllEmployee()) {
-			if (id == e.getId()) {
-				System.out.println("Choose");
-				System.out.println("1. Update Emp ID");
-				System.out.println("2. Update Emp Name");
-				System.out.println("3. Update Emp Salary");
-				System.out.println("4. Update Emp Age");
-				System.out.println("5. Update Emp Contact");
-				System.out.println("6. All details Update");
-				int choice = scanner.nextInt();
-				switch (choice) {
-				case 1:
-					System.out.println("Enter Emp ID: ");
-					int id1 = scanner.nextInt();
-					scanner.next();
-					e.setId(id1);
-					System.out.println("ID Updated Successfully");
-					break;
+			for (Employee e : controller.getAllEmployee()) {
+				if (id == e.getId()) {
+					System.out.println("Choose");
+					System.out.println("1. Update Emp ID");
+					System.out.println("2. Update Emp Name");
+					System.out.println("3. Update Emp Salary");
+					System.out.println("4. Update Emp Age");
+					System.out.println("5. Update Emp Contact");
+					System.out.println("6. All details Update");
+					int choice = scanner.nextInt();
+					switch (choice) {
+					case 1:
+						System.out.println("Enter Emp ID: ");
+						int id1 = scanner.nextInt();
+						scanner.next();
+						e.setId(id1);
+						System.out.println("ID Updated Successfully");
+						break;
 
-				case 2:
-					System.out.println("Enter Emp Name: ");
-					String name = scanner.nextLine();
-					scanner.next();
-					e.setName(name);
-					System.out.println("Emp Name Updated Successfully");
-					break;
+					case 2:
+						System.out.println("Enter Emp Name: ");
+						String name = scanner.nextLine();
+						scanner.next();
+						e.setName(name);
+						System.out.println("Emp Name Updated Successfully");
+						break;
 
-				case 3:
-					System.out.println("Enter Emp Salary: ");
-					double sal = scanner.nextDouble();
-					scanner.next();
-					e.setSal(sal);
-					System.out.println("Emp Salary Updated Successfully");
-					break;
+					case 3:
+						System.out.println("Enter Emp Salary: ");
+						double sal = scanner.nextDouble();
+						scanner.nextLine();
+						e.setSal(sal);
+						System.out.println("Emp Salary Updated Successfully");
+						break;
 
-				case 4:
-					System.out.println("Enter Emp Age: ");
-					int age = scanner.nextInt();
-					scanner.next();
-					e.setAge(age);
-					System.out.println("Emp Age Updated Successfully");
-					break;
+					case 4:
+						System.out.println("Enter Emp Age: ");
+						int age = scanner.nextInt();
+						scanner.next();
+						e.setAge(age);
+						System.out.println("Emp Age Updated Successfully");
+						break;
 
-				case 5:
-					System.out.println("Enter Emp Contact: ");
-					int contact = scanner.nextInt();
-					scanner.next();
-					e.setContact(contact);
-					System.out.println("Emp Contact Updated Successfully");
-					break;
+					case 5:
+						System.out.println("Enter Emp Contact: ");
+						int contact = scanner.nextInt();
+						scanner.next();
+						e.setContact(contact);
+						System.out.println("Emp Contact Updated Successfully");
+						break;
 
-				case 6:
-					System.out.println("Enter Employee ID: ");
-					int id2 = scanner.nextInt();
-					scanner.next();
-					System.out.println("Enter Employee Name: ");
-					String name2 = scanner.nextLine();
-					System.out.println("Enter Employee Age: ");
-					int age1 = scanner.nextInt();
-					scanner.next();
-					System.out.println("Enter Employee Salary: ");
-					double sal1 = scanner.nextDouble();
-					scanner.next();
-					System.out.println("Enter Employee Contact: ");
-					int contact1 = scanner.nextInt();
-					scanner.next();
-					e.setId(id2);
-					e.setName(name2);
-					e.setAge(age1);
-					e.setSal(sal1);
-					e.setContact(contact1);
-					System.out.println("Employee Details Updated Successfully.");
-					break;
+					case 6:
+						System.out.println("Enter Employee ID: ");
+						int id2 = scanner.nextInt();
+						scanner.next();
+						System.out.println("Enter Employee Name: ");
+						String name2 = scanner.nextLine();
+						System.out.println("Enter Employee Age: ");
+						int age1 = scanner.nextInt();
+						scanner.next();
+						System.out.println("Enter Employee Salary: ");
+						double sal1 = scanner.nextDouble();
+						scanner.next();
+						System.out.println("Enter Employee Contact: ");
+						int contact1 = scanner.nextInt();
+						scanner.next();
+						e.setId(id2);
+						e.setName(name2);
+						e.setAge(age1);
+						e.setSal(sal1);
+						e.setContact(contact1);
+						System.out.println("Employee Details Updated Successfully.");
+						break;
 
-				default:
-					System.out.println("Invalid choice.");
-					break;
+					default:
+						System.out.println("Invalid choice.");
+						break;
+					}
 				}
 			}
 		}
